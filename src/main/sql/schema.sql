@@ -30,7 +30,7 @@ VALUES
 
 -- 秒杀成功明细表
 -- 用户登录认证相关的信息
-CREATE TABLE seccess_killed(
+CREATE TABLE success_killed(
   seckill_id BIGINT NOT NULL COMMENT '秒杀商品ID',
   user_phone BIGINT NOT NULL COMMENT '用户手机号',
   status TINYINT NOT NULL DEFAULT -1 COMMENT '状态:-1:无效、0:成功、1:已付款给',
