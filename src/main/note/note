@@ -1,0 +1,4 @@
+
+spring声明式事务:
+1. 当程序抛出运行期异常时,spring才会rollback
+2. 谨慎使用try{} catch(){}

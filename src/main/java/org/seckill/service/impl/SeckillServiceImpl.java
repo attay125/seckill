@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import java.util.Date;
@@ -67,6 +68,13 @@ public class SeckillServiceImpl implements SeckillService{
         return md5;
     }
 
+    @Transactional
+    /**
+     * 使用注解配置的优点:
+     * 1.开发团队达成一致,明确标注事务方法的编程风格
+     * 2.保证事务方法的时间尽可能短,不要穿插其他网络操作(RPC/HTTP请求),需要的话应该放到事务方法外部
+     * 3.不是所有的方法都需要事务,如只有一条修改操作、只读操作不需要
+     */
     public SeckillExecution executeSeckill(long seckillId, long userPhone, String md5)
             throws SeckillCloseException, RepeatKillException, SeckillException {
         if(md5 == null || !md5.equals(getMD5(seckillId))){
