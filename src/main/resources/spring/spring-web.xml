@@ -27,7 +27,7 @@
     <!--3.配置jsp 显示ViewResolver-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="perfix" value="/WEB-INFO/jsp"/>
+        <property name="prefix" value="/WEB-INFO/jsp"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
