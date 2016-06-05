@@ -1,29 +1,68 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="common/tag.jsp"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Bootstrap 101 Template</title>
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <title>秒杀详情页</title>
+    <%@include file="common/head.jsp"%>
   </head>
   <body>
-    <h1>你好，世界！</h1>
+  <div class="modal fade" id="killPhoneModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            <span class="glphyicon glphyicon-phone"></span>秒杀电话:
+          </h3>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-xs-8 clo-xs-offset-2">
+              <input type="text" name="killPhone" id="killPhoneKey" placeholder="填写手机号^o^" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="alert alert-warning" style="display: none;margin-bottom: 0;padding-top: 0;padding-bottom: 0;" role="alert" id="killPhoneMessage">
+            <strong>Warning!</strong> 手机号错误!
+          </div>
+          <button type="button" id="killPhoneBtn" class="btn btn-success">
+            <span class="glyphicon glyphicon-phone"></span>
+            submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h1>${seckill.name}</h1>
+        </div>
+        <div class="panel-body">
+          <h2 class="text-danger">
+            <span class="glyphicon glyphicon-time"></span>
+            <span class="glyphicon" id="seckill-box"></span>
+          </h2>
+        </div>
+      </div>
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.1.0/jquery.countdown.min.js"></script>
+    <script src="/resources/js/seckill.js"></script>
+    <script>
+      $(function () {
+        seckill.detail.init({
+          id : ${seckill.seckillId},
+          startTime : ${seckill.startTime.time},
+          endTime : ${seckill.endTime.time}
+        });
+      });
+    </script>
   </body>
 </html>

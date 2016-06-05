@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
@@ -24,7 +25,7 @@ import java.util.List;
 /**
  * Created by moonie on 16/5/30.
  */
-@Component
+@Service
 public class SeckillServiceImpl implements SeckillService{
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -38,7 +39,7 @@ public class SeckillServiceImpl implements SeckillService{
     private final String slat = "fsadjfweijp9up98239(&(@(&*@";
 
     public List<Seckill> getSeckillList() {
-        return seckillDao.queryAll(0,4);
+        return seckillDao.queryAll(0,10);
     }
 
     public Seckill getById(long seckillId) {
